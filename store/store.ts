@@ -1,6 +1,8 @@
 import create, { State, StateCreator } from "zustand";
+import shallow from 'zustand/shallow'
 import produce, { Draft } from "immer";
 import { Store, Todo } from "./types";
+import { IS_SSR, TODOS_STORAGE_KEY } from "../constants";
 
 const immer = <T extends State>(
   config: StateCreator<T, (fn: (draft: Draft<T>) => void) => void>
@@ -48,16 +50,33 @@ const useStore = create<Store>(
         set(() => ({
           todos: [],
         })),
+      initTodos: (todos) => set(() => ({todos}))
     })),
 );
 
+useStore.subscribe<Todo[]>(
+  (todos) => {
+    if (!IS_SSR) {
+      window.localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(todos))
+    }
+  },
+  (state) => state.todos
+);
+
 const todosSelector = (state: Store) => state.todos;
+const initTodosSelector = (state: Store) => state.initTodos;
+const resetTodosSelector = (state: Store) => state.resetTodos;
 const addTodoSelector = (state: Store) => state.addTodo;
 const toggleTodoSelector = (state: Store) => state.toggleTodo;
 
+const todoApiSelector = (state: Store) => ({add: state.addTodo, remove: state.removeTodo, toggle: state.toggleTodo, reset: state.resetTodos})
+
 const useTodos = () => useStore(todosSelector);
+const useResetTodos = () => useStore(resetTodosSelector)
 const useAddTodo = () => useStore(addTodoSelector);
 const useToggleTodo = () => useStore(toggleTodoSelector);
+const useInitTodos = () => useStore(initTodosSelector)
+const useTodoAPI = () => useStore(todoApiSelector, shallow)
 
 export type { Todo, Store };
-export { useStore, useTodos, useAddTodo, useToggleTodo };
+export { useStore, useTodos, useAddTodo, useToggleTodo, useInitTodos, useResetTodos, useTodoAPI };

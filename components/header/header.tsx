@@ -1,6 +1,7 @@
 import { FC, useCallback } from "react";
 import Link from "next/link";
 import { useStore } from "../../store";
+import { Counter } from "../counter";
 
 const Header: FC = () => {
   const count = useStore(useCallback((state) => state.todos, [])).length;
@@ -13,6 +14,7 @@ const Header: FC = () => {
       </nav>
       <span>Count: {count}</span>
       <div>{Math.random()}</div>
+      <Counter />
     </header>
   );
 };

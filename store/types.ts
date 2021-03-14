@@ -9,9 +9,10 @@ type FilterEnum = "all" | "completed" | "active";
 type Store = {
   todos: Todo[];
   visibilityFilter: FilterEnum;
-  setVisibilityFilter: (filter: FilterEnum) => void;
   todoTitle: string;
   isLoading: boolean;
+  initTodos: (initialTodos: Todo[]) => void;
+  setVisibilityFilter: (filter: FilterEnum) => void;
   addTodo: (todo: Todo) => void;
   setTodoTitle: (title: string) => void;
   toggleTodo: (id: number) => void;
@@ -20,4 +21,4 @@ type Store = {
   resetTodos: () => void;
 };
 
-export type {Todo, FilterEnum, Store}
+export type { Todo, FilterEnum, Store };

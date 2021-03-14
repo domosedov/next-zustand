@@ -1,5 +1,5 @@
 import { FC, FormEvent, useCallback } from "react";
-import { useStore } from "../store";
+import { useResetTodos, useStore } from "../store";
 
 const About: FC = () => {
   const todos = useStore(useCallback((state) => state.todos, []));
@@ -11,6 +11,7 @@ const About: FC = () => {
     addTodo({ id: Date.now(), title, completed: false });
     setTitle("");
   };
+  const resetTodos = useResetTodos();
 
   return (
     <div>
@@ -23,6 +24,7 @@ const About: FC = () => {
         />
         <button type="submit">Add Todo</button>
       </form>
+      <button onClick={() => resetTodos()}>RESET TODOS</button>
       <div>
         <pre>{JSON.stringify(todos, null, 2)}</pre>
       </div>
