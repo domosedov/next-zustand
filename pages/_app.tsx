@@ -1,19 +1,30 @@
-import { FC } from 'react'
+import { FC, useRef } from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { Hydrate } from 'react-query/hydration'
 import { AppProps } from 'next/app'
 import 'focus-visible'
 import '../styles/tailwind.css'
-import { Header } from '../components/header'
 import { useBootstrapApp } from '../bootstrap'
 import { ThemeProvider } from 'next-themes'
+import { Layout } from '../components/layout'
 
 const Application: FC<AppProps> = ({ Component, pageProps }) => {
   useBootstrapApp()
+  const queryClientRef = useRef<QueryClient>()
+  if (!queryClientRef.current) {
+    queryClientRef.current = new QueryClient()
+  }
 
   return (
-    <ThemeProvider attribute='class'>
-      <Header />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClientRef.current}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <ThemeProvider attribute='class'>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </Hydrate>
+    </QueryClientProvider>
   )
 }
 

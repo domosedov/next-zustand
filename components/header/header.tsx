@@ -1,22 +1,17 @@
-import { FC, useCallback } from "react";
-import Link from "next/link";
-import { useStore } from "../../store";
-import { Counter } from "../counter";
+import { FC } from 'react'
+import { Container } from '../shared/ui/container'
 
 const Header: FC = () => {
-  const count = useStore(useCallback((state) => state.todos, [])).length;
-
   return (
-    <header>
-      <nav>
-        <Link href="/">Home</Link>
-        <Link href="/about">About</Link>
-      </nav>
-      <span>Count: {count}</span>
-      <div>{Math.random()}</div>
-      <Counter />
+    <header className='bg-black text-white'>
+      <Container>
+        Далеко-далеко за словесными горами, в стране гласных и согласных живут
+        рыбные тексты. Вершину, коварных? Страну наш, жаренные рукопись
+        единственное языком маленький до путь одна. Курсивных вопрос пояс свой
+        текстами? Толку, родного речью.
+      </Container>
     </header>
-  );
-};
+  )
+}
 
-export { Header };
+export { Header }

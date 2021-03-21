@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
-import { IS_SSR, TODOS_STORAGE_KEY } from './constants'
-import { Todo, useInitTodos } from './store'
+import { TODOS_STORAGE_KEY } from './constants'
+import { __IS_SSR__ } from './env'
+import { Todo, useInitTodos } from './store/todo'
 
 const useBootstrapApp = () => {
   const initTodos = useInitTodos()
-
   useEffect(() => {
-    if (!IS_SSR) {
+    if (!__IS_SSR__) {
       const storageTodos = window.localStorage.getItem(TODOS_STORAGE_KEY)
       let todos: Todo[]
       if (storageTodos) {

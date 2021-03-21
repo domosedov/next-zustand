@@ -2,15 +2,15 @@ import create, { State, StateCreator } from "zustand";
 import shallow from 'zustand/shallow'
 import produce, { Draft } from "immer";
 import { Store, Todo } from "./types";
-import { IS_SSR, TODOS_STORAGE_KEY } from "../constants";
+import { __IS_SSR__ } from "../../env";
+import { TODOS_STORAGE_KEY } from "../../constants";
 
 const immer = <T extends State>(
   config: StateCreator<T, (fn: (draft: Draft<T>) => void) => void>
 ): StateCreator<T> => (set, get, api) =>
   config((fn) => set(produce(fn) as (state: T) => T), get, api);
 
-const useStore = create<Store>(
-  
+const useStore = create<Store>(  
     immer((set, _get) => ({
       todos: [],
       todoTitle: "",
@@ -56,7 +56,7 @@ const useStore = create<Store>(
 
 useStore.subscribe<Todo[]>(
   (todos) => {
-    if (!IS_SSR) {
+    if (!__IS_SSR__) {
       window.localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(todos))
     }
   },
