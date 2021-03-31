@@ -4,12 +4,10 @@ import { Hydrate } from 'react-query/hydration'
 import { AppProps } from 'next/app'
 import 'focus-visible'
 import '../styles/tailwind.css'
-import { useBootstrapApp } from '../bootstrap'
 import { ThemeProvider } from 'next-themes'
 import { Layout } from '../components/layout'
 
 const Application: FC<AppProps> = ({ Component, pageProps }) => {
-  useBootstrapApp()
   const queryClientRef = useRef<QueryClient>()
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient()
