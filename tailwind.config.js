@@ -1,11 +1,16 @@
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'class',
+  darkMode: false,
   theme: {
     container: {
       center: true,
     },
     extend: {
+      colors: {
+        brand: {
+          DEFAULT: '#90a16d',
+        },
+      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: 0 },

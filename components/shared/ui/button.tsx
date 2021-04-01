@@ -24,7 +24,6 @@ type ButtonProps = DetailedHTMLProps<
 type ButtonOptions = {
   variant?: Variants
   size?: Sizes
-  pulse?: boolean
 }
 
 type Props = ButtonOptions & ButtonProps
@@ -33,13 +32,7 @@ const defaultStyle =
   'text-white rounded-sm focus:outline-none focus-visible:outline-none outline-none active:transform active:scale-110 duration-200 focus-visible:ring-red-400 focus-visible:ring-2'
 
 export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
-  const {
-    variant = 'blue',
-    size = 'normal',
-    pulse = false,
-    className,
-    ...rest
-  } = props
+  const { variant = 'blue', size = 'normal', className, ...rest } = props
 
   return (
     <button
@@ -49,7 +42,6 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
         VARIANTS_MAP[variant],
         SIZES_MAP[size],
         className,
-        { 'animate-pulse': pulse },
       )}
       {...rest}
     />
