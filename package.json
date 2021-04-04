@@ -8,7 +8,11 @@
     "start": "next start",
     "deps:update": "ncu",
     "deps:upgrade": "ncu -u && npm i",
-    "test": "jest"
+    "format": "prettier --write \"**/*.+(js|ts|jsx|tsx|json|css|md|mdx|html)\"",
+    "lint": "eslint .",
+    "check-types": "tsc",
+    "test": "jest",
+    "prepare": "husky install"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -52,6 +56,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "jest-dom": "^4.0.0",
+    "lint-staged": "^10.5.4",
     "npm-check-updates": "^11.3.0",
     "postcss": "^8.2.9",
     "postcss-focus-visible": "^5.0.0",
@@ -59,6 +64,7 @@
     "tailwindcss": "^2.0.4",
     "ts-jest": "^26.5.4",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "husky": "^6.0.0"
   }
 }
