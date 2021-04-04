@@ -4,8 +4,6 @@ import Home from '../pages/index'
 describe('App', () => {
   it('renders without crashing', () => {
     render(<Home />)
-    expect(
-      screen.getByRole('heading', { name: 'Home Page' }),
-    ).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Welcome' })).toBeInTheDocument()
   })
 })

@@ -1,5 +1,5 @@
 {
-  "*.+(js|ts|jsx|tsx": [
+  "*.+(js|ts|jsx|tsx)": [
     "eslint --cache --fix"
   ],
   "*.+(js|ts|jsx|tsx|json|css|html|md|mdx)": [
