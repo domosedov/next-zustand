@@ -1,8 +1,8 @@
 {
-  "*.(js|ts|jsx|tsx": [
-    "eslint"
+  "*.+(js|ts|jsx|tsx": [
+    "eslint --cache --fix"
   ],
-  "*.(js|ts|jsx|tsx|json|css|html": [
+  "*.+(js|ts|jsx|tsx|json|css|html|md|mdx)": [
     "prettier --write"
   ]
 }
