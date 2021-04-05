@@ -37,3 +37,7 @@ yarn-error.log*
 .idea
 
 .eslintcache
+
+# Cypress
+cypress/videos
+cypress/screenshots
