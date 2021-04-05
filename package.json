@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
@@ -11,8 +12,7 @@
     "format": "prettier --write \"**/*.+(js|ts|jsx|tsx|json|css|md|mdx|html)\"",
     "lint": "eslint .",
     "check-types": "tsc",
-    "test": "jest",
-    "prepare": "husky install"
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.21.1",
