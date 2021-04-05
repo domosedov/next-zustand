@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "dev": "next dev -p 3001",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "deps:update": "ncu",
@@ -67,6 +67,7 @@
     "postcss": "^8.2.9",
     "postcss-focus-visible": "^5.0.0",
     "prettier": "^2.2.1",
+    "start-server-and-test": "^1.12.1",
     "tailwindcss": "^2.0.4",
     "ts-jest": "^26.5.4",
     "ts-node": "^9.1.1",

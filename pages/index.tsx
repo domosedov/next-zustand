@@ -12,6 +12,7 @@ const HomePage: FC = () => {
         <Button size='big' onClick={toggle}>
           Click me!
         </Button>
+        <p>Click me!</p>
         <Animated
           show={open}
           enter='animate-zoomIn'
